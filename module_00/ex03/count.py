@@ -3,6 +3,10 @@ import sys
 
 
 def __numberCharUpperInString(text):
+
+    """
+        Calculate the number of the upper case characters in a string
+    """
     count = 0
 
     for c in text:
@@ -12,6 +16,10 @@ def __numberCharUpperInString(text):
 
 
 def __numberCharLowerInString(text):
+
+    """
+        Calculate the number of the lower case characters in a string
+    """
     count = 0
 
     for c in text:
@@ -21,6 +29,10 @@ def __numberCharLowerInString(text):
 
 
 def __numberSpaceInString(text):
+
+    """
+        Calculate the number of the space characters in a string
+    """
     count = 0
 
     for c in text:
@@ -30,6 +42,10 @@ def __numberSpaceInString(text):
 
 
 def __numberPunctuationInString(text):
+
+    """
+        Calculate the number of Punctuation in a string
+    """
     count = 0
 
     for c in text:
@@ -50,12 +66,16 @@ def text_analyzer(text):
 
     toReturn = "The text contains " + str(len(text)) + " character(s): \n"
 
+    # get the number of upper characters
     nCharUpper = __numberCharUpperInString(text)
 
+    # get the number of lower characters
     nCharLower = __numberCharLowerInString(text)
 
+    # get the number of space characters
     nSpace = __numberSpaceInString(text)
 
+    # get the number of punctuation characters
     nPunctuation = __numberPunctuationInString(text)
 
     toReturn += "- " + str(nCharUpper) + " upper litter(s) \n"
@@ -70,6 +90,10 @@ def text_analyzer(text):
 
 
 def __argvToString(argv):
+
+    """
+        Concatenate a array 2d of arguments
+    """
     avStr = ""
 
     for arg in argv:
@@ -81,6 +105,7 @@ try:
     if len(sys.argv) != 2:
         raise AssertionError("You must provide one string argument")
 
+    # i comented this because is not required by the subject
     # text = __argvToString(sys.argv)
 
     print(text_analyzer(text=sys.argv[1]))
