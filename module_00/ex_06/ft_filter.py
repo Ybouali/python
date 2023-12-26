@@ -1,27 +1,7 @@
 from types import NoneType
 from typing import Any
 
-def __NULL_not_found(object: Any) -> bool:
-
-    if isinstance(object, NoneType):
-        return False
-    
-    if isinstance(object, float) and m.isnan(object):
-        return False
-
-        if isinstance(object, int) and object == 0:
-
-            print(f"Zero: {object} {type(object)}")
-
-            return 0
-
-        if isinstance(object, str) and len(object) == 0:
-
-            print(f"Empty: {object} {type(object)}")
-
-            return 0
-
-def ft_filter(func, iterable):
+def ft_filter(__func, __iterable ):
 
     """
         ft_filter(function or None, iterable) --> filter object
@@ -30,15 +10,19 @@ def ft_filter(func, iterable):
         is true. If function is None, return the items that are true.
     """
 
-    print (type(iterable))
+    # print (type(iterable))
 
-    if isinstance(func, NoneType):
-        return iterable
+    to_return = []
+
+    if isinstance(__func, NoneType):
+        return __iterable
 
 
-    for i in iterable:
-        if func(i) is True:
-            print (f"Filter ({i})")
+    for i in __iterable:
+        if __func(i) is True:
+            to_return.append(i)
+
+    return iter(to_return)
 
 def is_even(n) -> bool:
     return bool(n % 2)
@@ -47,11 +31,31 @@ def main():
     try:
         numbers = [1, 2, 3, 4, 5]
 
-        evens_numbers = filter(None, numbers)
-        ft_evens_numbers = ft_filter(None, numbers)
+        evens_numbers = filter(is_even, numbers)
+        ft_evens_numbers = ft_filter(is_even, numbers)
 
         print (list(evens_numbers))
-        print (ft_evens_numbers)
+        print (list(ft_evens_numbers))
+
+        evens_numbers_1 = filter(None, numbers)
+        ft_evens_numbers_1 = ft_filter(None, numbers)
+
+        print (list(evens_numbers_1))
+        print (list(ft_evens_numbers_1))
+
+        evens_numbers_2 = filter(None, [])
+        ft_evens_numbers_2 = ft_filter(None, [])
+
+        print (list(evens_numbers_2))
+        print (list(ft_evens_numbers_2))
+
+        nums = [5, 10, 23, 64, 42, 53, 93, 2, 0, -14, 6, -22, -13]
+
+        odd = filter(lambda p : p%2 != 0, nums)
+        ft_odd = ft_filter(lambda p : p%2 != 0, nums)
+
+        print (list(odd))
+        print (list(ft_odd))
 
     except Exception as e:
         print(e)
